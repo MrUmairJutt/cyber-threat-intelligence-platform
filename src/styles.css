@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+  background: #02050b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #02050b;
+  color: #f8fafc;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.018),
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+}
+
+::selection {
+  background: rgba(24, 255, 154, 0.35);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02050b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#18ff9a, #22d3ee);
+  border-radius: 999px;
+}
+
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(24, 255, 154, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+}
+
+.world-grid {
+  background-image:
+    linear-gradient(rgba(24, 255, 154, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 255, 154, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: perspective(700px) rotateX(62deg) translateY(12%);
+  transform-origin: top;
+}
+
+.world-map {
+  background:
+    radial-gradient(ellipse at 24% 36%, rgba(34, 211, 238, 0.28) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 48% 31%, rgba(34, 211, 238, 0.26) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 59% 48%, rgba(34, 211, 238, 0.22) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 77% 42%, rgba(34, 211, 238, 0.25) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 31% 64%, rgba(24, 255, 154, 0.18) 0 7%, transparent 8%),
+    linear-gradient(rgba(24, 255, 154, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: auto, auto, auto, auto, auto, 52px 52px, 52px 52px;
+}
+
+.glass-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 26px 80px rgba(0, 0, 0, 0.38);
+}
+
+.glitch-text {
+  position: relative;
+  text-shadow:
+    0 0 18px rgba(24, 255, 154, 0.22),
+    0 0 36px rgba(34, 211, 238, 0.12);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glitch-text::before {
+  color: #22d3ee;
+  animation: glitch-a 4s infinite;
+  transform: translateX(2px);
+}
+
+.glitch-text::after {
+  color: #ff3158;
+  animation: glitch-b 4s infinite;
+  transform: translateX(-2px);
+}
+
+.neon-button {
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(24, 255, 154, 0.45),
+    0 0 28px rgba(24, 255, 154, 0.28);
+}
+
+.neon-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transition: transform 0.7s ease;
+}
+
+.neon-button:hover::before {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+@keyframes glitch-a {
+  0%,
+  92%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+  93% {
+    clip-path: inset(15% 0 58% 0);
+    opacity: 0.65;
+  }
+  94% {
+    clip-path: inset(62% 0 18% 0);
+    opacity: 0.35;
+  }
+}
+
+@keyframes glitch-b {
+  0%,
+  91%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+  92% {
+    clip-path: inset(45% 0 32% 0);
+    opacity: 0.55;
+  }
+  94% {
+    clip-path: inset(8% 0 75% 0);
+    opacity: 0.45;
+  }
+}
